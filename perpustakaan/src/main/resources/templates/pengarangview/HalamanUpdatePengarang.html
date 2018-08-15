@@ -41,10 +41,11 @@
                         <div class="box-body">
                             <div class="col-xs-3"></div>
                             <div class="col-xs-6">
-                                <form method="POST" action="tambahpeserta" enctype="multipart/form-data">
+                                <form method="POST" action="tambahpengarang" enctype="multipart/form-data">
+                                    <input type="hidden" name="id" th:value="${pengarang.id}">
                                     <div class="form-group" align="center">
                                         <label>Pengarang</label>
-                                        <input type="text" name="nama_penerbit" class="form-control" placeholder="Enter ...">
+                                        <input type="text" name="nama_pengarang" class="form-control"  th:value="${pengarang.nama_pengarang}" placeholder="Enter ...">
                                     </div>
                                     <div align="center">
                                         <button type="submit" class="btn btn-primary">Submit</button>

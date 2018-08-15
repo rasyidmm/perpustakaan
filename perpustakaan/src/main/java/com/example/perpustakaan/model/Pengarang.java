@@ -23,7 +23,7 @@ public class Pengarang extends Additional implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nama_penerbit;
+    private String nama_pengarang;
 
     public Long getId() {
         return id;
@@ -79,18 +79,17 @@ public class Pengarang extends Additional implements Serializable {
         return serialVersionUID;
     }
 
-    /**
-     * @return the nama_penerbit
-     */
-    public String getNama_penerbit() {
-        return nama_penerbit;
+    public String getNama_pengarang() {
+        return nama_pengarang;
+    }
+
+    public void setNama_pengarang(String nama_pengarang) {
+        this.nama_pengarang = nama_pengarang;
     }
 
     /**
-     * @param nama_penerbit the nama_penerbit to set
+     * @return the nama_penerbit
      */
-    public void setNama_penerbit(String nama_penerbit) {
-        this.nama_penerbit = nama_penerbit;
-    }
+
 
 }
