@@ -36,25 +36,37 @@
                         <div class="box-header">
                             <h3 class="box-title">Pengarang</h3>
                         </div>
+
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <table id="example1" class="table table-bordered table-striped">
+                            <div>
+                                <a type="button" class="btn  btn-primary" th:href="@{tambahpeserta}">tambah Pengarang</a>
+                            </div>
+                            <hr>
+                            <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Pengarang</th>
+                                    <th width="20px">No</th>
+                                    <th width="750px">Pengarang</th>
+                                    <th width="150px">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
+                                <!--th:href="@{testdibuat(id=${test.id})}"-->
+                                <tr th:each="pengaralist, iterStat:${listpengara}">
+                                    <td th:text="${iterStat.count}"></td>
+                                    <td th:text="${pengaralist.nama_pengarang}"></td>
+                                    <td>
+                                        <a type="button" class="btn  btn-primary" th:href="@{updatepengarang(id=${pengaralist.id})}" >Update</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{hapuspengarang(id=${pengaralist.id})}">Delete</a>
+                                    </td>
                                 </tr>
                                 </tbody>
                                 <tfoot>
                                 <tr>
                                     <th>No</th>
                                     <th>Pengarang</th>
+                                    <th width="150px">Action</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -104,11 +116,11 @@
         $('#example1').DataTable()
         $('#example2').DataTable({
             'paging'      : true,
-            'lengthChange': false,
-            'searching'   : false,
+            'lengthChange': true,
+            'searching'   : true,
             'ordering'    : true,
             'info'        : true,
-            'autoWidth'   : false
+            'autoWidth'   : true
         })
     })
 

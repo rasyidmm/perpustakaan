@@ -47,7 +47,7 @@ public class Pengarang extends Additional implements Serializable {
             return false;
         }
         Pengarang other = (Pengarang) object;
-        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
