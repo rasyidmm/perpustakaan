@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -50,11 +50,13 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-asterisk"></i> List Buku</a></li>
-                            <li><a href="#"><i class="fa fa-asterisk"></i> Tambah Buku</a></li>
-                            <li><a href="#"><i class="fa fa-asterisk"></i> Pengarang Buku</a></li>
-                            <li><a href="#"><i class="fa fa-asterisk"></i> Penerbit Buku</a></li>
-                            <li><a href="#"><i class="fa fa-asterisk"></i> Disable</a></li>
+                            <li><a th:href="@{buku}"><i class="fa fa-asterisk"></i> List Buku</a></li>
+                            <li><a th:href="@{tambahbuku}"><i class="fa fa-asterisk"></i> Tambah Buku</a></li>
+                            <li><a th:href="@{pengarang}"><i class="fa fa-asterisk"></i> Pengarang Buku</a></li>
+                            <li><a th:href="@{penerbit}"><i class="fa fa-asterisk"></i> Penerbit Buku</a></li>
+                            <li><a th:href="@{rakbuku}"><i class="fa fa-asterisk"></i> Rakbuku</a></li>
+                            <li><a th:href="@{klasifikasi}"><i class="fa fa-asterisk"></i> Klasifikasi</a></li>
+                            <li><a th:href="@{buku}"><i class="fa fa-asterisk"></i> Disable</a></li>
                         </ul>
                     </li>
                     <li class="treeview">

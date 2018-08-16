@@ -40,7 +40,7 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="col-xs-12">
-                                <form method="POST" action="tambahpenerbit" enctype="multipart/form-data">
+                                <form method="POST" action="tambahbuku" enctype="multipart/form-data">
                                     <div class="col-xs-6">
                                         <div class="form-group" >
                                             <label>judul_buku</label>
@@ -61,20 +61,40 @@
                                     </div>
                                     <div class="col-xs-6">
                                         <div class="form-group">
-                                            <label>Pengarang</label>
-                                            <input type="text" name="nama_penerbit" class="form-control" placeholder="Enter ...">
+                                        <label>Penerbit</label>
+                                        <select  name="nama_penerbit"  class="form-control">
+                                            <option th:each="penerbit:${listpenerbit}"
+                                                    th:value="${penerbit.id}"
+                                                    th:text="${penerbit.nama_penerbit}">
+                                            </option>
+                                        </select>
+                                    </div>
+                                        <div class="form-group">
+                                            <label>pengarang</label>
+                                            <select  name="nama_pengarang"  class="form-control">
+                                                <option th:each="pengarang:${listpengarang}"
+                                                        th:value="${pengarang.id}"
+                                                        th:text="${pengarang.nama_pengarang}">
+                                                </option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>Pengarang</label>
-                                            <input type="text" name="nama_penerbit" class="form-control" placeholder="Enter ...">
+                                            <label>klasifikasi</label>
+                                            <select  name="nama_klasifikasi" class="form-control">
+                                                <option th:each="klasifikasi:${listklasifikasi}"
+                                                        th:value="${klasifikasi.id}"
+                                                        th:text="${klasifikasi.nama_klasifikasi}">
+                                                </option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>Pengarang</label>
-                                            <input type="text" name="nama_penerbit" class="form-control" placeholder="Enter ...">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Pengarang</label>
-                                            <input type="text" name="nama_penerbit" class="form-control" placeholder="Enter ...">
+                                            <label>rakbuku</label>
+                                            <select  name="nama_rakbuku" class="form-control">
+                                                <option th:each="rakbuku:${listrakbuku}"
+                                                        th:value="${rakbuku.id}"
+                                                        th:text="${rakbuku.nama_rakbuku}">
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div align="center">
