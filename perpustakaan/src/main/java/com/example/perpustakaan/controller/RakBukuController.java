@@ -17,25 +17,25 @@ public class RakBukuController {
     Rak_bukuService rak_bukuService;
     @RequestMapping(value = "/rakbuku")
     public ModelAndView masterrakbuku(){
-        return new ModelAndView("bukuview/HalamanPenerbit","listpenerbit",rak_bukuService.getAllRak_buku());
+        return new ModelAndView("rakbukuview/HalamanBuku","listrakbukuview",rak_bukuService.getAllRak_buku());
     }
     @RequestMapping(value = "/tambahrakbuku")
     public String formrakbuku(){
-        return "bukuview/HalamanFormPenerbit";
+        return "rakbukuview/HalamanFormRakbuku";
     }
-    @RequestMapping(value = "/tambahpenerbit",method = RequestMethod.POST)
+    @RequestMapping(value = "/tambahrakbuku",method = RequestMethod.POST)
     public String tambahrakbuku(@ModelAttribute("rakbuku")Rak_buku rakbuku){
         rakbuku.setCreateDate(new Date());
         rak_bukuService.SaveOrUpdate(rakbuku);
-        return "redirect:penerbit";
+        return "redirect:rakbuku";
     }
-    @RequestMapping(value = "/updatepenerbit",method = RequestMethod.GET)
+    @RequestMapping(value = "/updaterakbuku",method = RequestMethod.GET)
     public ModelAndView updaterakbuku(@RequestParam("id")long id){
-        return new ModelAndView("bukuview/HalamanUpdatePenerbit","penerbit",rak_bukuService.getById(id));
+        return new ModelAndView("rakbukuview/HalamanUpdateRakbuku","rakbukuview",rak_bukuService.getById(id));
     }
-    @RequestMapping(value = "/hapuspenerbit")
+    @RequestMapping(value = "/hapusrakbuku")
     public String deleterakbuku(@RequestParam("id")long id){
         rak_bukuService.deleteRak_buku(id);
-        return "redirect:penerbit";
+        return "redirect:rakbuku";
     }
 }

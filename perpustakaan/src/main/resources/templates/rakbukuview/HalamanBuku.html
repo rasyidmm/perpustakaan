@@ -40,7 +40,7 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div>
-                                <a type="button" class="btn  btn-primary" th:href="@{tambahpengarang}">tambah Pengarang</a>
+                                <a type="button" class="btn  btn-primary" th:href="@{tambahrakbuku}">tambah rakbuku</a>
                             </div>
                             <hr>
                             <table id="example2" class="table table-bordered table-hover">
@@ -52,12 +52,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="pengaralist, iterStat:${listpengara}">
+                                <tr th:each="bukuviewlist, iterStat:${listrakbukuview}">
                                     <td th:text="${iterStat.count}"></td>
-                                    <td th:text="${pengaralist.nama_pengarang}"></td>
+                                    <td th:text="${bukuviewlist.nama_rakbuku}"></td>
                                     <td>
-                                        <a type="button" class="btn  btn-primary" th:href="@{updatepengarang(id=${pengaralist.id})}" >Update</a>
-                                        <a type="button" class="btn  btn-primary" th:href="@{hapuspengarang(id=${pengaralist.id})}">Delete</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{updaterakbuku(id=${bukuviewlist.id})}" >Update</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{hapusrakbuku(id=${bukuviewlist.id})}">Delete</a>
                                     </td>
                                 </tr>
                                 </tbody>

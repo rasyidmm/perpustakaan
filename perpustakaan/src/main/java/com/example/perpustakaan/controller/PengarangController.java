@@ -17,11 +17,11 @@ public class PengarangController {
     PengarangService pengarangService;
     @RequestMapping("/pengarang")
     public ModelAndView masterPengarang(){
-        return new ModelAndView("bukuview/HalamanPengarang","listpengara",pengarangService.getAllPengarang());
+        return new ModelAndView("pengarangview/HalamanPengarang","listpengara",pengarangService.getAllPengarang());
     }
     @RequestMapping(value = "/tambahpengarang")
     public String formpengarang(){
-        return "bukuview/HalamanFormPengarang";
+        return "pengarangview/HalamanFormPengarang";
     }
     @RequestMapping(value = "/tambahpengarang",method = RequestMethod.POST)
     public String tambahPengarang(@ModelAttribute("Pengarang")Pengarang pengarang){
@@ -31,7 +31,7 @@ public class PengarangController {
     }
     @RequestMapping(value = "/updatepengarang",method = RequestMethod.GET)
     public ModelAndView updatePengarang(@RequestParam("id")long id){
-        return new ModelAndView("bukuview/HalamanUpdatePengarang","pengarang",pengarangService.getById(id));
+        return new ModelAndView("pengarangview/HalamanUpdatePengarang","pengarang",pengarangService.getById(id));
     }
     @RequestMapping(value = "/hapuspengarang")
     public String deletePengarang(@RequestParam("id")long id){
