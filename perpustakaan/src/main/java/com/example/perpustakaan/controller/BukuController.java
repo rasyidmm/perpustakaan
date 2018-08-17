@@ -1,9 +1,6 @@
 package com.example.perpustakaan.controller;
 
 import com.example.perpustakaan.model.Buku;
-import com.example.perpustakaan.model.Penerbit;
-import com.example.perpustakaan.model.Pengarang;
-import com.example.perpustakaan.model.Rak_buku;
 import com.example.perpustakaan.service.*;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,17 +10,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -47,7 +38,7 @@ public class BukuController {
     }
     @RequestMapping("/bukuview")
     public ModelAndView Halamanview(@RequestParam("id")long id){
-        return new ModelAndView("bukuview/HalamanViewBuku","bukudetail",bukuService.getById(id));
+        return new ModelAndView("HalamanBukuView","bukudetail",bukuService.getById(id));
     }
     @RequestMapping(value = "/tambahbuku")
     public ModelAndView formbuku(){
@@ -56,7 +47,7 @@ public class BukuController {
         mav.addObject("listpengarang",pengarangService.getAllPengarang());
         mav.addObject("listklasifikasi",klasifikasiService.getAllKlasifikasi());
         mav.addObject("listrakbuku",rak_bukuService.getAllRak_buku());
-        mav.setViewName("bukuview/HalamanFormBuku");
+        mav.setViewName("HalamanBukuForm");
         return mav;
     }
     public final String SaveDirectory= "E:/projekmu/perpustakaangit/perpustakaan/target/classes/static/image/coverbuku/";
@@ -90,7 +81,7 @@ public class BukuController {
         mav.addObject("listpengarang",pengarangService.getAllPengarang());
         mav.addObject("listklasifikasi",klasifikasiService.getAllKlasifikasi());
         mav.addObject("listrakbuku",rak_bukuService.getAllRak_buku());
-        mav.setViewName("bukuview/HalamanUpdateBuku");
+        mav.setViewName("HalamanBukuUpdate");
         return mav;
     }
     @RequestMapping(value = "/updatebuku",method = RequestMethod.POST)
