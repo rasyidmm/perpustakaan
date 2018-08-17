@@ -18,11 +18,11 @@ public class KlasifikasiController {
     KlasifikasiService klasifikasiService;
     @RequestMapping("/klasifikasi")
     public ModelAndView masterPengarang(){
-        return new ModelAndView("klasifikasiview/Halamanklasifikasi","listklasifikasi",klasifikasiService.getAllKlasifikasi());
+        return new ModelAndView("HalamanKlasifikasi","listklasifikasi",klasifikasiService.getAllKlasifikasi());
     }
     @RequestMapping(value = "/tambahklasifikasi")
     public String formpengarang(){
-        return "klasifikasiview/HalamanFormklasifikasi";
+        return "HalamanKlasifikasiForm";
     }
     @RequestMapping(value = "/tambahklasifikasi",method = RequestMethod.POST)
     public String tambahPengarang(@ModelAttribute("Klasifikasi")Klasifikasi klasifikasi){
@@ -32,7 +32,7 @@ public class KlasifikasiController {
     }
     @RequestMapping(value = "/updateklasifikasi",method = RequestMethod.GET)
     public ModelAndView updatePengarang(@RequestParam("id")long id){
-        return new ModelAndView("klasifikasiview/HalamanUpdateklasifikasi","klasifikasi",klasifikasiService.getById(id));
+        return new ModelAndView("HalamanKlasifikasiUpdate","klasifikasi",klasifikasiService.getById(id));
     }
     @RequestMapping(value = "/hapusklasifikasi")
     public String deletePengarang(@RequestParam("id")long id){
