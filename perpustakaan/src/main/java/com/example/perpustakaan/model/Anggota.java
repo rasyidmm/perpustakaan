@@ -28,6 +28,7 @@ public class Anggota extends Additional implements Serializable {
     private String telp;
     private String email;
     private String password;
+    private String foto_anggota;
 
 
     public Long getId() {
@@ -168,4 +169,11 @@ public class Anggota extends Additional implements Serializable {
         this.password = password;
     }
 
+    public String getFoto_anggota() {
+        return foto_anggota;
+    }
+
+    public void setFoto_anggota(String foto_anggota) {
+        this.foto_anggota = foto_anggota;
+    }
 }

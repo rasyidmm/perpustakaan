@@ -23,6 +23,7 @@ public class Buku extends Additional implements Serializable {
     private String tahun_buku;
     private String ISBN;
     private Double jumlah_buku;
+    private String gambar_buku;
     @ManyToOne
     private Pengarang pengarang;
     @ManyToOne
@@ -210,4 +211,11 @@ public class Buku extends Additional implements Serializable {
         this.peminjamans = peminjamans;
     }
 
+    public String getGambar_buku() {
+        return gambar_buku;
+    }
+
+    public void setGambar_buku(String gambar_buku) {
+        this.gambar_buku = gambar_buku;
+    }
 }

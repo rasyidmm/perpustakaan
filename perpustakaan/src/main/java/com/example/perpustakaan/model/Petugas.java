@@ -26,6 +26,7 @@ public class Petugas extends Additional implements Serializable {
     private String telp;
     private String email;
     private String password;
+    private String foto_petugas;
     @OneToMany(mappedBy = "petugas")
     private List<Peminjaman> peminjamans;
 
@@ -170,4 +171,11 @@ public class Petugas extends Additional implements Serializable {
         this.peminjamans = peminjamans;
     }
 
+    public String getFoto_petugas() {
+        return foto_petugas;
+    }
+
+    public void setFoto_petugas(String foto_petugas) {
+        this.foto_petugas = foto_petugas;
+    }
 }

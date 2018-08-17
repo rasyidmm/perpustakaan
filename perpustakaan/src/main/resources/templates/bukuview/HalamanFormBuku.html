@@ -58,17 +58,17 @@
                                             <label>jumlah_buku</label>
                                             <input type="text" name="jumlah_buku" class="form-control" placeholder="Enter ...">
                                         </div>
+                                        <div class="form-group">
+                                            <label>Penerbit</label>
+                                            <select  name="nama_penerbit"  class="form-control">
+                                                <option th:each="penerbit:${listpenerbit}"
+                                                        th:value="${penerbit.id}"
+                                                        th:text="${penerbit.nama_penerbit}">
+                                                </option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="col-xs-6">
-                                        <div class="form-group">
-                                        <label>Penerbit</label>
-                                        <select  name="nama_penerbit"  class="form-control">
-                                            <option th:each="penerbit:${listpenerbit}"
-                                                    th:value="${penerbit.id}"
-                                                    th:text="${penerbit.nama_penerbit}">
-                                            </option>
-                                        </select>
-                                    </div>
                                         <div class="form-group">
                                             <label>pengarang</label>
                                             <select  name="nama_pengarang"  class="form-control">
@@ -95,6 +95,11 @@
                                                         th:text="${rakbuku.nama_rakbuku}">
                                                 </option>
                                             </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile">Masukan Foto</label>
+                                            <input type="file" id="exampleInputFile" name="coverbuku">
+                                            <p class="help-block">hanya file .jpg</p>
                                         </div>
                                     </div>
                                     <div align="center">

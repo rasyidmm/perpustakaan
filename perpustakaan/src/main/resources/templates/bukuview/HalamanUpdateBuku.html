@@ -40,7 +40,7 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="col-xs-12">
-                                <form method="POST" action="tambahpenerbit" enctype="multipart/form-data">
+                                <form method="POST" action="updatebuku" enctype="multipart/form-data">
                                     <div class="col-xs-6"><input type="hidden" name="id" th:value="${bukuni.id}">
                                         <div class="form-group" >
                                             <label>judul_buku</label>
@@ -58,18 +58,19 @@
                                             <label>jumlah_buku</label>
                                             <input type="text" name="jumlah_buku" th:value="${bukuni.jumlah_buku}" class="form-control" placeholder="Enter ...">
                                         </div>
+                                        <div class="form-group">
+                                            <label>Penerbit</label>
+                                            <select  name="nama_penerbit" th:value="${bukuni.penerbit.id}"  class="form-control">
+                                                <option th:each="penerbit:${listpenerbit}"
+                                                        th:value="${penerbit.id}"
+                                                        th:text="${penerbit.nama_penerbit}"
+                                                        th:selected="${bukuni.penerbit.id==penerbit.id}">
+                                                </option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="col-xs-6">
-                                        <  <div class="form-group">
-                                        <label>Penerbit</label>
-                                        <select  name="nama_penerbit" th:value="${bukuni.penerbit.id}"  class="form-control">
-                                            <option th:each="penerbit:${listpenerbit}"
-                                                    th:value="${penerbit.id}"
-                                                    th:text="${penerbit.nama_penerbit}"
-                                                    th:selected="${bukuni.penerbit.id==penerbit.id}">
-                                            </option>
-                                        </select>
-                                    </div>
+
                                         <div class="form-group">
                                             <label>pengarang</label>
                                             <select  name="nama_pengarang" th:value="${bukuni.pengarang.id}" class="form-control">
@@ -99,6 +100,12 @@
                                                         th:selected="${bukuni.rak_buku.id==rakbuku.id}">
                                                 </option>
                                             </select>
+                                        </div>
+                                        <img class="profile-user-img img-responsive img-rounded" th:src="'image/coverbuku/'+${bukuni.gambar_buku}" alt="User profile picture">
+                                        <div class="form-group">
+                                            <label for="exampleInputFile">Masukan Foto</label>
+                                            <input type="file" id="exampleInputFile" name="coverbuku">
+                                            <p class="help-block">hanya file .jpg</p>
                                         </div>
                                     </div>
                                     <div align="center">
