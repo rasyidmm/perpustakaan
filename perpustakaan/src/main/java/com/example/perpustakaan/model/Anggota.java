@@ -53,7 +53,7 @@ public class Anggota extends Additional implements Serializable {
             return false;
         }
         Anggota other = (Anggota) object;
-        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;

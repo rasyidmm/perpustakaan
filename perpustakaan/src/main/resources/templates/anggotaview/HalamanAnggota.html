@@ -47,36 +47,33 @@
                                 <thead>
                                 <tr>
                                     <th align="center" width="15px">No</th>
-                                    <th align="center" width="380px">Judul Buku</th>
-                                    <th align="center" width="50px">Klasifikasi</th>
-                                    <th align="center" width="50px">Rak Buku</th>
-                                    <th align="center" width="120px">Jumlah Buku</th>
+                                    <th align="center" width="380px">Nama Anggota</th>
+                                    <th align="center" width="50px">Jenis Kelamin</th>
+                                    <th align="center" width="50px">Alamat</th>
                                     <th align="center" width="100px">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <!--th:href="@{testdibuat(id=${test.id})}"-->
-                                <tr th:each="buku, iterStat:${bukulist}">
+                                <tr th:each="anggota, iterStat:${listanggota}">
                                     <td th:text="${iterStat.count}"></td>
-                                    <td th:text="${buku.judul_buku}"></td>
-                                    <td th:text="${buku.klasifikasi.nama_klasifikasi}"></td>
-                                    <td th:text="${buku.rak_buku.nama_rakbuku}"></td>
-                                    <td align="center" th:text="${buku.jumlah_buku}"></td>
+                                    <td th:text="${anggota.nama_anggota}"></td>
+                                    <td th:text="${anggota.jenis_kelamin}"></td>
+                                    <td th:text="${anggota.alamat}"></td>
                                     <td align="center">
-                                        <a type="button" class="btn  btn-primary" th:href="@{bukuview(id=${buku.id})}" >view</a>
-                                        <a type="button" class="btn  btn-primary" th:href="@{updatebuku(id=${buku.id})}" >Update</a>
-                                        <a type="button" class="btn  btn-primary" th:href="@{hapusbuku(id=${buku.id})}">Delete</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{bukuview(id=${anggota.id})}" >view</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{updatebuku(id=${anggota.id})}" >Update</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{hapusbuku(id=${anggota.id})}">Delete</a>
                                     </td>
                                 </tr>
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th width="15px">No</th>
-                                    <th width="380px">Judul Buku</th>
-                                    <th width="50px">Klasifikasi</th>
-                                    <th width="50px">Rak Buku</th>
-                                    <th width="120px">Jumlah Buku</th>
-                                    <th width="100px">Action</th>
+                                    <th align="center" width="15px">No</th>
+                                    <th align="center" width="380px">Nama Anggota</th>
+                                    <th align="center" width="50px">Jenis Kelamin</th>
+                                    <th align="center" width="50px">Alamat</th>
+                                    <th align="center" width="100px">Action</th>
                                 </tr>
                                 </tfoot>
                             </table>

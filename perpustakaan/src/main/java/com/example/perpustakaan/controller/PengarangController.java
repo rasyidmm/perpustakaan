@@ -21,7 +21,7 @@ public class PengarangController {
     }
     @RequestMapping(value = "/tambahpengarang")
     public String formpengarang(){
-        return "HalamanPengarangForm";
+        return "pengarangview/HalamanPengarangForm";
     }
     @RequestMapping(value = "/tambahpengarang",method = RequestMethod.POST)
     public String tambahPengarang(@ModelAttribute("Pengarang")Pengarang pengarang){
@@ -31,7 +31,7 @@ public class PengarangController {
     }
     @RequestMapping(value = "/updatepengarang",method = RequestMethod.GET)
     public ModelAndView updatePengarang(@RequestParam("id")long id){
-        return new ModelAndView("HalamanPengarangUpdate","pengarang",pengarangService.getById(id));
+        return new ModelAndView("pengarangview/HalamanPengarangUpdate","pengarang",pengarangService.getById(id));
     }
     @RequestMapping(value = "/hapuspengarang")
     public String deletePengarang(@RequestParam("id")long id){

@@ -22,7 +22,7 @@ public class PenerbitController {
     }
     @RequestMapping(value = "/tambahpenerbit")
     public String formpenerbit(){
-        return "HalamanPenerbitForm";
+        return "penerbitview/HalamanPenerbitForm";
     }
     @RequestMapping(value = "/tambahpenerbit",method = RequestMethod.POST)
     public String tambahpenerbit(@ModelAttribute("Penerbit")Penerbit penerbit){
@@ -32,7 +32,7 @@ public class PenerbitController {
     }
     @RequestMapping(value = "/updatepenerbit",method = RequestMethod.GET)
     public ModelAndView updatePenerbit(@RequestParam("id")long id){
-        return new ModelAndView("HalamanPenerbitUpdate","penerbit",penerbitService.getById(id));
+        return new ModelAndView("penerbitview/HalamanPenerbitUpdate","penerbit",penerbitService.getById(id));
     }
     @RequestMapping(value = "/hapuspenerbit")
     public String deletepenerbit(@RequestParam("id")long id){

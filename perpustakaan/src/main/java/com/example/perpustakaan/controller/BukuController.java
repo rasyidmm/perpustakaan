@@ -38,7 +38,7 @@ public class BukuController {
     }
     @RequestMapping("/bukuview")
     public ModelAndView Halamanview(@RequestParam("id")long id){
-        return new ModelAndView("HalamanBukuView","bukudetail",bukuService.getById(id));
+        return new ModelAndView("bukuview/HalamanBukuView","bukudetail",bukuService.getById(id));
     }
     @RequestMapping(value = "/tambahbuku")
     public ModelAndView formbuku(){
@@ -47,7 +47,7 @@ public class BukuController {
         mav.addObject("listpengarang",pengarangService.getAllPengarang());
         mav.addObject("listklasifikasi",klasifikasiService.getAllKlasifikasi());
         mav.addObject("listrakbuku",rak_bukuService.getAllRak_buku());
-        mav.setViewName("HalamanBukuForm");
+        mav.setViewName("bukuview/HalamanBukuForm");
         return mav;
     }
     public final String SaveDirectory= "E:/projekmu/perpustakaangit/perpustakaan/target/classes/static/image/coverbuku/";
@@ -81,7 +81,7 @@ public class BukuController {
         mav.addObject("listpengarang",pengarangService.getAllPengarang());
         mav.addObject("listklasifikasi",klasifikasiService.getAllKlasifikasi());
         mav.addObject("listrakbuku",rak_bukuService.getAllRak_buku());
-        mav.setViewName("HalamanBukuUpdate");
+        mav.setViewName("bukuview/HalamanBukuUpdate");
         return mav;
     }
     @RequestMapping(value = "/updatebuku",method = RequestMethod.POST)

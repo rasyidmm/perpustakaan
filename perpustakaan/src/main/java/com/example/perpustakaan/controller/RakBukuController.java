@@ -17,11 +17,11 @@ public class RakBukuController {
     Rak_bukuService rak_bukuService;
     @RequestMapping(value = "/rakbuku")
     public ModelAndView masterrakbuku(){
-        return new ModelAndView("HalamanRakBuku","listrakbukuview",rak_bukuService.getAllRak_buku());
+        return new ModelAndView("rakbukuview/HalamanRakBuku","listrakbukuview",rak_bukuService.getAllRak_buku());
     }
     @RequestMapping(value = "/tambahrakbuku")
     public String formrakbuku(){
-        return "HalamanRakBukuForm";
+        return "rakbukuview/HalamanRakBukuForm";
     }
     @RequestMapping(value = "/tambahrakbuku",method = RequestMethod.POST)
     public String tambahrakbuku(@ModelAttribute("rakbuku")Rak_buku rakbuku){
@@ -31,7 +31,7 @@ public class RakBukuController {
     }
     @RequestMapping(value = "/updaterakbuku",method = RequestMethod.GET)
     public ModelAndView updaterakbuku(@RequestParam("id")long id){
-        return new ModelAndView("HalamanRakbukuUpdate","rakbukuview",rak_bukuService.getById(id));
+        return new ModelAndView("rakbukuview/HalamanRakbukuUpdate","rakbukuview",rak_bukuService.getById(id));
     }
     @RequestMapping(value = "/hapusrakbuku")
     public String deleterakbuku(@RequestParam("id")long id){
