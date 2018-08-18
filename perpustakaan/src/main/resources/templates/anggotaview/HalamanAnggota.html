@@ -40,7 +40,7 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div>
-                                <a type="button" class="btn  btn-primary" th:href="@{tambahbuku}">tambah buku</a>
+                                <a type="button" class="btn  btn-primary" th:href="@{tambahanggota}">tambah buku</a>
                             </div>
                             <hr>
                             <table id="example2" class="table table-bordered table-hover">
@@ -61,9 +61,9 @@
                                     <td th:text="${anggota.jenis_kelamin}"></td>
                                     <td th:text="${anggota.alamat}"></td>
                                     <td align="center">
-                                        <a type="button" class="btn  btn-primary" th:href="@{bukuview(id=${anggota.id})}" >view</a>
-                                        <a type="button" class="btn  btn-primary" th:href="@{updatebuku(id=${anggota.id})}" >Update</a>
-                                        <a type="button" class="btn  btn-primary" th:href="@{hapusbuku(id=${anggota.id})}">Delete</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{anggotaview(id=${anggota.id})}" >view</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{updateanggota(id=${anggota.id})}" >Update</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{deleteanggota(id=${anggota.id})}">Delete</a>
                                     </td>
                                 </tr>
                                 </tbody>

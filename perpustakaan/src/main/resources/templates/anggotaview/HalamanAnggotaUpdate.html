@@ -40,72 +40,42 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="col-xs-12">
-                                <form method="POST" action="updatebuku" enctype="multipart/form-data">
-                                    <div class="col-xs-6"><input type="hidden" name="id" th:value="${bukuni.id}">
-                                        <div class="form-group" >
-                                            <label>judul_buku</label>
-                                            <input type="text" name="judul_buku" th:value="${bukuni.judul_buku}" class="form-control" placeholder="Enter ...">
-                                        </div>
-                                        <div class="form-group" >
-                                            <label>tahun_buku</label>
-                                            <input type="text" name="tahun_buku" th:value="${bukuni.tahun_buku}" class="form-control" placeholder="Enter ...">
-                                        </div>
-                                        <div class="form-group" >
-                                            <label>ISBN</label>
-                                            <input type="text" name="ISBN" th:value="${bukuni.ISBN}" class="form-control" placeholder="Enter ...">
-                                        </div>
-                                        <div class="form-group" >
-                                            <label>jumlah_buku</label>
-                                            <input type="text" name="jumlah_buku" th:value="${bukuni.jumlah_buku}" class="form-control" placeholder="Enter ...">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Penerbit</label>
-                                            <select  name="nama_penerbit" th:value="${bukuni.penerbit.id}"  class="form-control">
-                                                <option th:each="penerbit:${listpenerbit}"
-                                                        th:value="${penerbit.id}"
-                                                        th:text="${penerbit.nama_penerbit}"
-                                                        th:selected="${bukuni.penerbit.id==penerbit.id}">
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
+                                <form method="POST" action="updateanggota" enctype="multipart/form-data">
+                                    <div class="col-xs-12">
+                                        <div class="col-xs-6"> <input type="hidden" name="id" th:value="${anggotaid.id}">
+                                            <div class="form-group" >
+                                                <label>Nama Anggota</label>
+                                                <input type="text" th:value="${anggotaid.nama_anggota}" name="nama_anggota" class="form-control" placeholder="Enter ...">
+                                            </div>
+                                            <div class="form-group" >
+                                                <label>Jenis Kelamin</label>
+                                                <input type="text" th:value="${anggotaid.jenis_kelamin}" name="jenis_kelamin" class="form-control" placeholder="Enter ...">
+                                            </div>
+                                            <div class="form-group" >
+                                                <label>Telp</label>
+                                                <input type="text" th:value="${anggotaid.telp}" name="telp" class="form-control" placeholder="Enter ...">
+                                            </div>
+                                            <div class="form-group" >
+                                                <label>Email</label>
+                                                <input type="text" th:value="${anggotaid.email}" name="email" class="form-control" placeholder="Enter ...">
+                                            </div>
 
-                                        <div class="form-group">
-                                            <label>pengarang</label>
-                                            <select  name="nama_pengarang" th:value="${bukuni.pengarang.id}" class="form-control">
-                                                <option th:each="pengarang:${listpengarang}"
-                                                        th:value="${pengarang.id}"
-                                                        th:text="${pengarang.nama_pengarang}"
-                                                        th:selected="${bukuni.pengarang.id==pengarang.id}">
-                                                </option>
-                                            </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label>klasifikasi</label>
-                                            <select  name="nama_klasifikasi" th:value="${bukuni.klasifikasi.id}" class="form-control">
-                                                <option th:each="klasifikasi:${listklasifikasi}"
-                                                        th:value="${klasifikasi.id}"
-                                                        th:text="${klasifikasi.nama_klasifikasi}"
-                                                        th:selected="${bukuni.klasifikasi.id==klasifikasi.id}">
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>rakbuku</label>
-                                            <select  name="nama_rakbuku" th:value="${bukuni.rak_buku.id}" class="form-control">
-                                                <option th:each="rakbuku:${listrakbuku}"
-                                                        th:value="${rakbuku.id}"
-                                                        th:text="${rakbuku.nama_rakbuku}"
-                                                        th:selected="${bukuni.rak_buku.id==rakbuku.id}">
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <img class="profile-user-img img-responsive img-rounded" th:src="'image/coverbuku/'+${bukuni.gambar_buku}" alt="User profile picture">
-                                        <div class="form-group">
-                                            <label for="exampleInputFile">Masukan Foto</label>
-                                            <input type="file" id="exampleInputFile" name="coverbuku">
-                                            <p class="help-block">hanya file .jpg</p>
+                                        <div class="col-xs-6">
+                                            <!--<div class="form-group" >-->
+                                                <!--<label>Password</label>-->
+                                                <!--<input type="text" th:value="${anggotaid.}" name="password" class="form-control" placeholder="Enter ...">-->
+                                            <!--</div>-->
+                                            <div class="form-group" >
+                                                <label>Alamat</label>
+                                                <textarea type="text" th:text="${anggotaid.alamat}" name="alamat" class="form-control" placeholder="Enter ..."></textarea>
+                                            </div>
+                                            <img class="profile-user-img img-responsive img-rounded" th:src="'image/anggota/'+${anggotaid.foto_anggota}" alt="User profile picture">
+                                            <div class="form-group">
+                                                <label for="exampleInputFile">Masukan Foto</label>
+                                                <input th:type="file" id="exampleInputFile" name="fotok_anggota">
+                                                <p class="help-block">hanya file .jpg</p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div align="center">

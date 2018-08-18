@@ -90,13 +90,12 @@ public class BukuController {
                              @RequestParam("coverbuku")MultipartFile coverbuku,@RequestParam("id")long id,RedirectAttributes redirectAttributes){
 
         Buku bu = bukuService.getById(id);
-        String exten= FilenameUtils.getExtension(bu.getGambar_buku().toLowerCase());
+        String covernya = bu.getGambar_buku();
+        File file = new File(SaveDirectory.concat(covernya));
         String filecover = bu.getGambar_buku();
         if (coverbuku.isEmpty()==true){
             buku.setGambar_buku(filecover);
         }else {
-            String covernya = bu.getGambar_buku();
-            File file = new File(SaveDirectory.concat(covernya));
             file.delete();
             try {
                 byte[] bytes = coverbuku.getBytes();
@@ -110,7 +109,6 @@ public class BukuController {
                 e.printStackTrace();
             }
         }
-
         buku.setKlasifikasi(klasifikasiService.getById(nama_klasifikasi));
         buku.setPenerbit(penerbitService.getById(nama_penerbit));
         buku.setPengarang(pengarangService.getById(nama_pengarang));

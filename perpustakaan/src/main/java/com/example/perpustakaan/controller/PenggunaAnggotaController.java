@@ -5,10 +5,7 @@ import com.example.perpustakaan.service.AnggotaService;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -53,6 +50,44 @@ public class PenggunaAnggotaController {
             e.printStackTrace();
         }
         anggotaService.SaveOrUpdate(anggota);
+        return "redirect:anggota";
+    }
+    @RequestMapping(value = "/updateanggota",method = RequestMethod.GET)
+    public ModelAndView formUpdateanggota(@RequestParam("id")long id){
+        return new ModelAndView("anggotaview/HalamanAnggotaUpdate","anggotaid",anggotaService.getById(id));
+    }
+    @RequestMapping(value = "/updateanggota",method = RequestMethod.POST)
+    public String updateanggota(@RequestParam("id")long id,@ModelAttribute("Anggtota")Anggota anggota,@RequestParam("fotok_anggota")MultipartFile fotoanggota,RedirectAttributes redirectAttributes){
+        Anggota ang = anggotaService.getById(id);
+        String namafotos = ang.getFoto_anggota();
+        File file = new File(SaveDirectory.concat(namafotos));
+        if (fotoanggota.isEmpty()==true){
+            anggota.setFoto_anggota(ang.getFoto_anggota());
+        }else {
+            try {
+                file.delete();
+                byte[] bytes = fotoanggota.getBytes();
+                String match= String.valueOf(Math.random());
+                String random =  match.replace(".","");
+                String nama= fotoanggota.getOriginalFilename().replace(fotoanggota.getOriginalFilename(), FilenameUtils.getBaseName(fotoanggota.getOriginalFilename()).concat(currentDate+"_"+random+"_"+ang.getId()) + "." + FilenameUtils.getExtension(fotoanggota.getOriginalFilename())).toLowerCase();
+                anggota.setFoto_anggota(nama);
+                Path path = Paths.get(SaveDirectory +nama);
+                Files.write(path, bytes);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        anggota.setPassword(ang.getPassword());
+        anggotaService.SaveOrUpdate(anggota);
+        return "redirect:anggota";
+    }
+    @RequestMapping(value = "/deleteanggota")
+    public String hapusAnggota(@RequestParam("id")long id){
+        Anggota ang = anggotaService.getById(id);
+        String namafotos = ang.getFoto_anggota();
+        File file = new File(SaveDirectory.concat(namafotos));
+        file.delete();
+        anggotaService.deleteAnggota(id);
         return "redirect:anggota";
     }
 }
