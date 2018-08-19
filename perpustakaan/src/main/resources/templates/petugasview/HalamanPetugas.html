@@ -18,8 +18,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Buku
-                <small>Anggota</small>
+                Petugas
+                <small>Petugas</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -34,20 +34,20 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Anggota</h3>
+                            <h3 class="box-title">Petugas</h3>
                         </div>
 
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div>
-                                <a type="button" class="btn  btn-primary" th:href="@{tambahanggota}">Tambah Anggota</a>
+                                <a type="button" class="btn  btn-primary" th:href="@{tambahpetugas}">tambah Petugas</a>
                             </div>
                             <hr>
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th align="center" width="15px">No</th>
-                                    <th align="center" width="380px">Nama Anggota</th>
+                                    <th align="center" width="380px">Nama Petugas</th>
                                     <th align="center" width="50px">Jenis Kelamin</th>
                                     <th align="center" width="50px">Alamat</th>
                                     <th align="center" width="100px">Action</th>
@@ -55,22 +55,22 @@
                                 </thead>
                                 <tbody>
                                 <!--th:href="@{testdibuat(id=${test.id})}"-->
-                                <tr th:each="anggota, iterStat:${listanggota}">
+                                <tr th:each="petugas, iterStat:${listpetugas}">
                                     <td th:text="${iterStat.count}"></td>
-                                    <td th:text="${anggota.nama_anggota}"></td>
-                                    <td th:text="${anggota.jenis_kelamin}"></td>
-                                    <td th:text="${anggota.alamat}"></td>
+                                    <td th:text="${petugas.nama_petugas}"></td>
+                                    <td th:text="${petugas.jenis_kelamin}"></td>
+                                    <td th:text="${petugas.alamat}"></td>
                                     <td align="center">
-                                        <a type="button" class="btn  btn-primary" th:href="@{anggotaview(id=${anggota.id})}" >view</a>
-                                        <a type="button" class="btn  btn-primary" th:href="@{updateanggota(id=${anggota.id})}" >Update</a>
-                                        <a type="button" class="btn  btn-primary" th:href="@{deleteanggota(id=${anggota.id})}">Delete</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{petugasview(id=${petugas.id})}" >view</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{updatepetugas(id=${petugas.id})}" >Update</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{deletepetugas(id=${petugas.id})}">Delete</a>
                                     </td>
                                 </tr>
                                 </tbody>
                                 <tfoot>
                                 <tr>
                                     <th align="center" width="15px">No</th>
-                                    <th align="center" width="380px">Nama Anggota</th>
+                                    <th align="center" width="380px">Nama Petugas</th>
                                     <th align="center" width="50px">Jenis Kelamin</th>
                                     <th align="center" width="50px">Alamat</th>
                                     <th align="center" width="100px">Action</th>
