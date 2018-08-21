@@ -23,7 +23,7 @@ public class Peminjaman extends Additional implements Serializable {
     private Date tanggal_pinjam;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date tanggal_kembali;
-    private Double denda;
+    private Long denda;
     @ManyToOne
     private Buku buku;
     @ManyToOne
@@ -102,14 +102,12 @@ public class Peminjaman extends Additional implements Serializable {
     /**
      * @return the denda
      */
-    public Double getDenda() {
-        return denda;
-    }
+
 
     /**
      * @param denda the denda to set
      */
-    public void setDenda(Double denda) {
+    public void setDenda(long denda) {
         this.denda = denda;
     }
 
@@ -155,4 +153,11 @@ public class Peminjaman extends Additional implements Serializable {
         this.petugas = petugas;
     }
 
+    public Long getDenda() {
+        return denda;
+    }
+
+    public void setDenda(Long denda) {
+        this.denda = denda;
+    }
 }

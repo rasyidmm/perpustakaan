@@ -1,0 +1,170 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head   th:include="fragments/head :: head">
+</head>
+<body class="hold-transition skin-blue layout-boxed sidebar-mini">
+<div class="wrapper">
+    <header th:include="fragments/header :: header" class="main-header"> </header>
+
+
+
+    <!-- Left side column. contains the logo and sidebar bawah-->
+
+    <div  th:include="fragments/sidebar"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Buku
+                <small>Buku</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Buku</h3>
+                        </div>
+
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div>
+                                <a type="button" class="btn  btn-primary" th:href="@{tambahbuku}">Tambah Buku</a>
+                            </div>
+                            <hr>
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                <tr align="center">
+                                    <th width="15px">No</th>
+                                    <th width="380px">Judul Buku</th>
+                                    <th width="50px">Klasifikasi</th>
+                                    <th width="50px">Rak Buku</th>
+                                    <th width="120px">Jumlah Buku</th>
+                                    <th width="100px">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!--th:href="@{testdibuat(id=${test.id})}"-->
+                                <tr th:each="buku, iterStat:${bukulist}">
+                                    <td th:text="${iterStat.count}"></td>
+                                    <td th:text="${buku.judul_buku}"></td>
+                                    <td th:text="${buku.klasifikasi.nama_klasifikasi}"></td>
+                                    <td th:text="${buku.rak_buku.nama_rakbuku}"></td>
+                                    <td align="center" th:text="${buku.jumlah_buku}"></td>
+                                    <td align="center">
+                                        <a type="button" class="btn  btn-primary" th:href="@{bukuview(id=${buku.id})}" >view</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{updatebuku(id=${buku.id})}" >Update</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{hapusbuku(id=${buku.id})}">Delete</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th width="15px">No</th>
+                                    <th width="380px">Judul Buku</th>
+                                    <th width="50px">Klasifikasi</th>
+                                    <th width="50px">Rak Buku</th>
+                                    <th width="120px">Jumlah Buku</th>
+                                    <th width="100px">Action</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer  th:include="fragments/footer :: footer" class="main-footer"></footer>
+
+    <!-- Control Sidebar -->
+
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="/bower_components/jquery-ui/jquery-ui.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script th:inline="javascript">
+    $.widget.bridge('uibutton', $.ui.button);
+    $(function () {
+        $('#datepicker').datepicker({
+            autoclose: true
+        })
+    });
+    $(document).ready(function(){
+        $("#jenis_soal").change(function(){
+            var x = document.getElementById("hideme");
+            //$(x).toggle();
+            if (x.style.display == "none") {
+                x.style.display = "inline";
+            } else {
+                x.style.display = "none";
+            }
+        })
+    });
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging'      : true,
+            'lengthChange': true,
+            'searching'   : true,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : true
+        })
+    })
+
+</script>
+<script src="/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<!-- Morris.js charts -->
+<script src="/bower_components/raphael/raphael.js"></script>
+<script src="/bower_components/morris.js/morris.min.js"></script>
+<!-- Sparkline -->
+<script src="/bower_components/jquery-sparkline/dist/jquery.sparkline.js"></script>
+<!-- jvectormap -->
+<script src="/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="/bower_components/moment/min/moment.min.js"></script>
+<script src="/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
+<!-- Slimscroll -->
+<script src="/bower_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+<!-- FastClick -->
+<script src="/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="/dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+</body>
+</html>
