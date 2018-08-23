@@ -35,7 +35,7 @@ public class PenggunaAnggotaController {
     public String formAnggota(){
         return "anggotaview/HalamanAnggotaForm";
     }
-    public final String SaveDirectory= "E:/projekmu/perpustakaangit/perpustakaan/target/classes/static/image/anggota/";
+    public final String SaveDirectory= "/home/rasyid/gitprojek/perpustakaan/target/classes/static/image/anggota/";
     @RequestMapping(value = "/tambahanggota",method = RequestMethod.POST)
     public String tambahAnggota(@ModelAttribute("Anggtota")Anggota anggota,@RequestParam("fotok_anggota")MultipartFile fotoanggota,RedirectAttributes redirectAttributes) {
         try {

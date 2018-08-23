@@ -1,12 +1,7 @@
 package com.example.perpustakaan.model;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
+import javax.persistence.*;
 
 /**
  *
@@ -19,16 +14,21 @@ public class Peminjaman extends Additional implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(length = 100,nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date tanggal_pinjam;
+    @Column(length = 100,nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date tanggal_kembali;
-    private Long denda;
+    private Double denda;
+    @Column(length = 100,nullable = false)
     @ManyToOne
     private Buku buku;
     @ManyToOne
+    @Column(length = 100,nullable = false)
     private Anggota anggota;
     @ManyToOne
+    @Column(length = 100,nullable = false)
     private Petugas petugas;
 
     public Long getId() {
@@ -107,9 +107,7 @@ public class Peminjaman extends Additional implements Serializable {
     /**
      * @param denda the denda to set
      */
-    public void setDenda(long denda) {
-        this.denda = denda;
-    }
+
 
     /**
      * @return the buku
@@ -153,11 +151,12 @@ public class Peminjaman extends Additional implements Serializable {
         this.petugas = petugas;
     }
 
-    public Long getDenda() {
+
+    public Double getDenda() {
         return denda;
     }
 
-    public void setDenda(Long denda) {
+    public void setDenda(Double denda) {
         this.denda = denda;
     }
 }

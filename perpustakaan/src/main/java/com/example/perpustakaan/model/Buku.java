@@ -1,12 +1,7 @@
 package com.example.perpustakaan.model;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 /**
  *
@@ -19,18 +14,27 @@ public class Buku extends Additional implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(length = 100,nullable = false)
     private String judul_buku;
+    @Column(length = 100,nullable = false)
     private String tahun_buku;
+    @Column(length = 100,nullable = false)
     private String ISBN;
-    private Double jumlah_buku;
+    @Column(length = 100,nullable = false)
+    private Long jumlah_buku;
+    @Column(length = 100,nullable = false)
     private String gambar_buku;
     @ManyToOne
+    @Column(length = 100,nullable = false)
     private Pengarang pengarang;
     @ManyToOne
+    @Column(length = 100,nullable = false)
     private Penerbit penerbit;
     @ManyToOne
+    @Column(length = 100,nullable = false)
     private Klasifikasi klasifikasi;
     @ManyToOne
+    @Column(length = 100,nullable = false)
     private Rak_buku rak_buku;
     @OneToMany(mappedBy = "buku")
     private List<Peminjaman> peminjamans;
@@ -130,16 +134,11 @@ public class Buku extends Additional implements Serializable {
     /**
      * @return the jumlah_buku
      */
-    public Double getJumlah_buku() {
-        return jumlah_buku;
-    }
 
     /**
      * @param jumlah_buku the jumlah_buku to set
      */
-    public void setJumlah_buku(Double jumlah_buku) {
-        this.jumlah_buku = jumlah_buku;
-    }
+
 
     /**
      * @return the pengarang
@@ -217,5 +216,13 @@ public class Buku extends Additional implements Serializable {
 
     public void setGambar_buku(String gambar_buku) {
         this.gambar_buku = gambar_buku;
+    }
+
+    public Long getJumlah_buku() {
+        return jumlah_buku;
+    }
+
+    public void setJumlah_buku(Long jumlah_buku) {
+        this.jumlah_buku = jumlah_buku;
     }
 }

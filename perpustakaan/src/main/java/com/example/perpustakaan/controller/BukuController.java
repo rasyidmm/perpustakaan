@@ -50,7 +50,7 @@ public class BukuController {
         mav.setViewName("bukuview/HalamanBukuForm");
         return mav;
     }
-    public final String SaveDirectory= "E:/projekmu/perpustakaangit/perpustakaan/target/classes/static/image/coverbuku/";
+    public final String SaveDirectory= "/home/rasyid/gitprojek/perpustakaan/target/classes/static/image/coverbuku/";
     @RequestMapping(value = "/tambahbuku",method = RequestMethod.POST)
     public String tambahbuku(@ModelAttribute("Buku")Buku buku, @RequestParam("nama_rakbuku") long nama_rakbuku, @RequestParam("nama_penerbit")long nama_penerbit,
                              @RequestParam("nama_pengarang")long nama_pengarang, @RequestParam("nama_klasifikasi")long nama_klasifikasi,

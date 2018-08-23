@@ -1,25 +1,18 @@
 package com.example.perpustakaan.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.*;
-
-/**
- *
- * @author rasyid
- */
 @Entity
-public class Anggota extends Additional implements Serializable {
-
-    @OneToMany(mappedBy = "anggota")
-    private List<Peminjaman> peminjamans;
+public class Admin extends Additional implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Basic(optional = false)
     @Column(length = 100,nullable = false)
-    private String nama_anggota;
+    private String nama_Admin;
     @Column(length = 100,nullable = false)
     private String jenis_kelamin;
     @Column(length = 100,nullable = false)
@@ -31,7 +24,11 @@ public class Anggota extends Additional implements Serializable {
     @Column(length = 100,nullable = false)
     private String password;
     @Column(length = 100,nullable = false)
-    private String foto_anggota;
+    private String foto_Admin;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
 
     public Long getId() {
@@ -67,116 +64,60 @@ public class Anggota extends Additional implements Serializable {
         return "model.Anggota[ id=" + getId() + " ]";
     }
 
-    /**
-     * @return the peminjamans
-     */
-    public List<Peminjaman> getPeminjamans() {
-        return peminjamans;
+
+    public String getNama_Admin() {
+        return nama_Admin;
     }
 
-    /**
-     * @param peminjamans the peminjamans to set
-     */
-    public void setPeminjamans(List<Peminjaman> peminjamans) {
-        this.peminjamans = peminjamans;
+    public void setNama_Admin(String nama_Admin) {
+        this.nama_Admin = nama_Admin;
     }
 
-    /**
-     * @return the serialVersionUID
-     */
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    /**
-     * @return the nama_anggota
-     */
-    public String getNama_anggota() {
-        return nama_anggota;
-    }
-
-    /**
-     * @param nama_anggota the nama_anggota to set
-     */
-    public void setNama_anggota(String nama_anggota) {
-        this.nama_anggota = nama_anggota;
-    }
-
-    /**
-     * @return the jenis_kelamin
-     */
     public String getJenis_kelamin() {
         return jenis_kelamin;
     }
 
-    /**
-     * @param jenis_kelamin the jenis_kelamin to set
-     */
     public void setJenis_kelamin(String jenis_kelamin) {
         this.jenis_kelamin = jenis_kelamin;
     }
 
-    /**
-     * @return the alamat
-     */
     public String getAlamat() {
         return alamat;
     }
 
-    /**
-     * @param alamat the alamat to set
-     */
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
 
-    /**
-     * @return the telp
-     */
     public String getTelp() {
         return telp;
     }
 
-    /**
-     * @param telp the telp to set
-     */
     public void setTelp(String telp) {
         this.telp = telp;
     }
 
-    /**
-     * @return the email
-     */
     public String getEmail() {
         return email;
     }
 
-    /**
-     * @param email the email to set
-     */
     public void setEmail(String email) {
         this.email = email;
     }
 
-    /**
-     * @return the password
-     */
     public String getPassword() {
         return password;
     }
 
-    /**
-     * @param password the password to set
-     */
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getFoto_anggota() {
-        return foto_anggota;
+    public String getFoto_Admin() {
+        return foto_Admin;
     }
 
-    public void setFoto_anggota(String foto_anggota) {
-        this.foto_anggota = foto_anggota;
+    public void setFoto_Admin(String foto_Admin) {
+        this.foto_Admin = foto_Admin;
     }
 }

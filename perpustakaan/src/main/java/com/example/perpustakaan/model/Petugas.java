@@ -3,11 +3,7 @@ package com.example.perpustakaan.model;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 /**
  *
@@ -20,12 +16,19 @@ public class Petugas extends Additional implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(length = 100,nullable = false)
     private String nama_petugas;
+    @Column(length = 100,nullable = false)
     private String jenis_kelamin;
+    @Column(length = 100,nullable = false)
     private String alamat;
+    @Column(length = 100,nullable = false)
     private String telp;
+    @Column(length = 100,nullable = false,unique = true)
     private String email;
+    @Column(length = 100,nullable = false)
     private String password;
+    @Column(length = 100,nullable = false)
     private String foto_petugas;
     @OneToMany(mappedBy = "petugas")
     private List<Peminjaman> peminjamans;

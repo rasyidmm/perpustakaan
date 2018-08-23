@@ -39,4 +39,11 @@ public class PeminjamanService implements PeminjamanDao {
     public void deletePeminjaman(Peminjaman a) {
         peminjamanRepository.delete(a);
     }
+
+    public List<Peminjaman>findAllByPinjam(){
+        return peminjamanRepository.findAllByPinjam();
+    }
+    public List<Peminjaman>findAllBySelesai(){
+        return peminjamanRepository.findAllBySelesai();
+    }
 }

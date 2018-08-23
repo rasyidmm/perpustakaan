@@ -40,24 +40,24 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div>
-                                <a type="button" class="btn  btn-primary" th:href="@{tambahbuku}">Tambah Buku</a>
+                                <a type="button" class="btn  btn-primary" th:href="@{tambahpeminjaman}">Tambah Peminjaman</a>
                             </div>
                             <hr>
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr align="center">
                                     <th width="15px">No</th>
-                                    <th width="180px">Nama Anggota</th>
-                                    <th width="180px">Judul Buku</th>
+                                    <th width="150px">Nama Anggota</th>
+                                    <th width="150px">Judul Buku</th>
                                     <th width="150px">Tanggal Pinjam</th>
                                     <th width="160px">Tanggal kembali</th>
                                     <th width="100px">Deenda</th>
-                                    <th width="100px">Action</th>
+                                    <th width="180px">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <!--th:href="@{testdibuat(id=${test.id})}"-->
-                                <tr th:each="peminjaaman, iterStat:${listpeminjaaman}">
+                                <tr th:each="peminjaaman, iterStat:${listpinjam}">
                                     <td th:text="${iterStat.count}"></td>
                                     <td th:text="${peminjaaman.anggota.nama_anggota}"></td>
                                     <td th:text="${peminjaaman.buku.judul_buku}"></td>
@@ -65,10 +65,10 @@
                                     <td align="center" th:text="${peminjaaman.tanggal_kembali}"></td>
                                     <td align="center" th:text="${peminjaaman.denda}"></td>
                                     <td align="center">
-                                        <a type="button" class="btn  btn-primary" th:href="@{bukuview(id=${peminjaaman.id})}" >view</a>
-                                        <a type="button" class="btn  btn-primary" th:href="@{updatebuku(id=${peminjaaman.id})}" >Update</a>
-                                        <a type="button" class="btn  btn-primary" th:href="@{hapusbuku(id=${peminjaaman.id})}">Delete</a>
-                                        <a type="button" class="btn  btn-primary" th:href="@{pengembalianbuk(id=${peminjaaman.id})}">pengembalianbuk</a>
+                                        <a type="button" class="btn  btn-primary" th:href="@{viewpeminjaman(id=${peminjaaman.id})}" >view</a>
+                                        <!--<a type="button" class="btn  btn-primary" th:href="@{updatepeminjaman(id=${peminjaaman.id})}" >Update</a>-->
+                                        <!--<a type="button" class="btn  btn-primary" th:href="@{hapusbuku(id=${peminjaaman.id})}">Delete</a>-->
+                                        <a type="button" class="btn  btn-primary" th:href="@{pengembalianbuk(id=${peminjaaman.id})}">Pengembalian</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -84,6 +84,54 @@
                                 </tr>
                                 </tfoot>
                             </table>
+                        </div>
+                        <div class="box-body">
+                            <div>
+                                <a type="button" class="btn  btn-primary" th:href="@{tambahpeminjaman}">Tambah Peminjaman</a>
+                            </div>
+                            <hr>
+                            <table id="example1" class="table table-bordered table-hover">
+                                <thead>
+                                <tr align="center">
+                                    <th width="15px">No</th>
+                                    <th width="150px">Nama Anggota</th>
+                                    <th width="150px">Judul Buku</th>
+                                    <th width="150px">Tanggal Pinjam</th>
+                                    <th width="160px">Tanggal kembali</th>
+                                    <th width="100px">Deenda</th>
+                                    <th width="180px">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!--th:href="@{testdibuat(id=${test.id})}"-->
+                                <tr th:each="peminjaaman, iterStat:${listselesai}">
+                                    <td th:text="${iterStat.count}"></td>
+                                    <td th:text="${peminjaaman.anggota.nama_anggota}"></td>
+                                    <td th:text="${peminjaaman.buku.judul_buku}"></td>
+                                    <td th:text="${peminjaaman.tanggal_pinjam}"></td>
+                                    <td align="center" th:text="${peminjaaman.tanggal_kembali}"></td>
+                                    <td align="center" th:text="${peminjaaman.denda}"></td>
+                                    <td align="center">
+                                        <a type="button" class="btn  btn-primary" th:href="@{viewpeminjaman(id=${peminjaaman.id})}" >view</a>
+                                        <!--<a type="button" class="btn  btn-primary" th:href="@{updatepeminjaman(id=${peminjaaman.id})}" >Update</a>-->
+                                        <!--<a type="button" class="btn  btn-primary" th:href="@{hapusbuku(id=${peminjaaman.id})}">Delete</a>-->
+                                        <!--<a type="button" class="btn  btn-primary" th:href="@{pengembalianbuk(id=${peminjaaman.id})}">Pengembalian</a>-->
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th width="15px">No</th>
+                                    <th width="120px">Nama Anggota</th>
+                                    <th width="120px">Judul Buku</th>
+                                    <th width="120px">Tanggal Pinjam</th>
+                                    <th width="120px">Tanggal kembali</th>
+                                    <th width="100px">Deenda</th>
+                                    <th width="100px">Action</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+
                         </div>
                         <!-- /.box-body -->
                     </div>
