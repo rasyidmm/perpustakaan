@@ -1,7 +1,9 @@
 package com.example.perpustakaan.controller;
 
 import com.example.perpustakaan.model.Anggota;
+import com.example.perpustakaan.model.Peminjaman;
 import com.example.perpustakaan.service.AnggotaService;
+import com.example.perpustakaan.service.PeminjamanService;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,19 +25,26 @@ public class PenggunaAnggotaController {
     String currentDate = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
     @Autowired
     AnggotaService anggotaService;
+    @Autowired
+    PeminjamanService peminjamanService;
     @RequestMapping(value = "/anggota",method = RequestMethod.GET)
     public ModelAndView MasterAnggota(){
         return new ModelAndView("anggotaview/HalamanAnggota","listanggota",anggotaService.getAllAnggota());
     }
     @RequestMapping(value = "/anggotaview",method = RequestMethod.GET)
     public ModelAndView viewAnggota(@RequestParam("id")long id){
-        return new ModelAndView("anggotaview/HalamanAnggotaView","anggota",anggotaService.getById(id));
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("history",peminjamanService.findPeminjamenByAnggotaid(id));
+        mav.addObject("anggota",anggotaService.getById(id));
+        mav.setViewName("anggotaview/HalamanAnggotaView");
+        return mav;
+//        return new ModelAndView("anggotaview/HalamanAnggotaView","anggota",anggotaService.getById(id));
     }
     @RequestMapping(value = "/tambahanggota")
     public String formAnggota(){
         return "anggotaview/HalamanAnggotaForm";
     }
-    public final String SaveDirectory= "/home/rasyid/gitprojek/perpustakaan/target/classes/static/image/anggota/";
+    public final String SaveDirectory= "/home/rasyid/projekgit/perpustakaan/perpustakaan/target/classes/static/image/anggota/";
     @RequestMapping(value = "/tambahanggota",method = RequestMethod.POST)
     public String tambahAnggota(@ModelAttribute("Anggtota")Anggota anggota,@RequestParam("fotok_anggota")MultipartFile fotoanggota,RedirectAttributes redirectAttributes) {
         try {

@@ -46,4 +46,7 @@ public class PeminjamanService implements PeminjamanDao {
     public List<Peminjaman>findAllBySelesai(){
         return peminjamanRepository.findAllBySelesai();
     }
+    public List<Peminjaman>findPeminjamenByAnggotaid(long id){
+        return peminjamanRepository.findPeminjamenByAnggotaid(id);
+    }
 }

@@ -72,7 +72,11 @@ public class PeminjamanController {
         Buku buku = bukuService.getById(peminjaman.getBuku().getId());
         long jumlahbuku = buku.getJumlah_buku()+1;
         buku.setJumlah_buku(jumlahbuku);
-        peminjaman.setDenda(Double.valueOf(tataldenda));
+        if(tataldenda <0){
+            peminjaman.setDenda((double) 0);
+        }else {
+            peminjaman.setDenda(Double.valueOf(tataldenda));
+        }
         peminjaman.setStatus("Selesai");
         peminjamanService.SaveOrUpdate(peminjaman);
         bukuService.SaveOrUpdate(buku);

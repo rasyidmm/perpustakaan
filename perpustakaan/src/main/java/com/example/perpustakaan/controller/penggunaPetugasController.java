@@ -37,7 +37,7 @@ public class penggunaPetugasController {
     public String formPetugas(){
         return "petugasview/HalamanPetugasForm";
     }
-    public final String SaveDirectory= "/home/rasyid/gitprojek/perpustakaan/target/classes/static/image/petugas/";
+    public final String SaveDirectory= "/home/rasyid/projekgit/perpustakaan/perpustakaan/target/classes/static/image/petugas/";
     @RequestMapping(value = "/tambahpetugas",method = RequestMethod.POST)
     public String tambahPetugas(@ModelAttribute("Petugas")Petugas petugas, @RequestParam("fotok_petugas")MultipartFile fotopetugas, RedirectAttributes redirectAttributes) {
         try {

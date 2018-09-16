@@ -35,7 +35,7 @@
                     <div class="box">
                         <div class="box-header">
                             <div align="center" class="col-xs-12">
-                                <h3 class="box-title">Detail Buku</h3>
+                                <h3 class="box-title">Detail Anggota</h3>
                             </div>
                             <br>
                             <div class="col-xs-12">
@@ -76,6 +76,57 @@
                         <!-- /.box-header -->
                         <div class="box-body">
 
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">History Pinjam Buku</h3>
+                        </div>
+
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <hr>
+                            <table id="example1" class="table table-bordered table-hover">
+                                <thead>
+                                <tr align="center">
+                                    <th width="15px">No</th>
+                                    <th width="150px">Nama Anggota</th>
+                                    <th width="150px">Judul Buku</th>
+                                    <th width="150px">Tanggal Pinjam</th>
+                                    <th width="160px">Tanggal kembali</th>
+                                    <th width="100px">Denda</th>
+                                    <th width="100px">Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!--th:href="@{testdibuat(id=${test.id})}"-->
+                                <tr th:each="historyid, iterStat:${history}">
+                                    <td th:text="${iterStat.count}"></td>
+                                    <td th:text="${historyid.getAnggota().nama_anggota}"></td>
+                                    <td th:text="${historyid.getBuku().judul_buku}"></td>
+                                    <td th:text="${historyid.tanggal_pinjam}"></td>
+                                    <td align="center" th:text="${historyid.tanggal_kembali}"></td>
+                                    <td align="center" th:text="${historyid.denda}"></td>
+                                    <td align="center" th:text="${historyid.status}"></td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th width="15px">No</th>
+                                    <th width="120px">Nama Anggota</th>
+                                    <th width="120px">Judul Buku</th>
+                                    <th width="120px">Tanggal Pinjam</th>
+                                    <th width="120px">Tanggal kembali</th>
+                                    <th width="100px">Denda</th>
+                                    <th width="100px">status</th>
+                                </tr>
+                                </tfoot>
+                            </table>
                         </div>
                         <!-- /.box-body -->
                     </div>
