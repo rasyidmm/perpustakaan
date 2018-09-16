@@ -26,6 +26,7 @@ public class PengarangController {
     @RequestMapping(value = "/tambahpengarang",method = RequestMethod.POST)
     public String tambahPengarang(@ModelAttribute("Pengarang")Pengarang pengarang){
         pengarang.setCreateDate(new Date());
+        pengarang.setStatus("Active");
         pengarangService.SaveOrUpdate(pengarang);
         return "redirect:pengarang";
     }
@@ -33,9 +34,23 @@ public class PengarangController {
     public ModelAndView updatePengarang(@RequestParam("id")long id){
         return new ModelAndView("pengarangview/HalamanPengarangUpdate","pengarang",pengarangService.getById(id));
     }
+    @RequestMapping(value = "/updatepengarang",method = RequestMethod.POST)
+    public String updatePengarang(@ModelAttribute("Pengarang")Pengarang pengarang){
+        pengarang.setUpdateDate(new Date());
+        pengarang.setStatus("Active");
+        pengarangService.SaveOrUpdate(pengarang);
+        return "redirect:pengarang";
+    }
     @RequestMapping(value = "/hapuspengarang")
     public String deletePengarang(@RequestParam("id")long id){
         pengarangService.deletePengarang(id);
+        return "redirect:pengarang";
+    }
+    @RequestMapping(value = "/hapuspengarangnon")
+    public String deletePengarangnon(@RequestParam("id")long id){
+        Pengarang pengarang = pengarangService.getById(id);
+        pengarang.setStatus("Disable");
+        pengarangService.SaveOrUpdate(pengarang);
         return "redirect:pengarang";
     }
 }

@@ -46,6 +46,8 @@ public class penggunaPetugasController {
             String random =  match.replace(".","");
             String nama= fotopetugas.getOriginalFilename().replace(fotopetugas.getOriginalFilename(), FilenameUtils.getBaseName(fotopetugas.getOriginalFilename()).concat(currentDate+random) + "." + FilenameUtils.getExtension(fotopetugas.getOriginalFilename())).toLowerCase();
             petugas.setFoto_petugas(nama);
+            petugas.setStatus("Active");
+            petugas.setCreateDate(new Date());
             Path path = Paths.get(SaveDirectory +nama);
             Files.write(path, bytes);
         } catch (IOException e) {
@@ -73,6 +75,8 @@ public class penggunaPetugasController {
                 String random =  match.replace(".","");
                 String nama= fotopetugas.getOriginalFilename().replace(fotopetugas.getOriginalFilename(), FilenameUtils.getBaseName(fotopetugas.getOriginalFilename()).concat(currentDate+"_"+random+"_"+peg.getId()) + "." + FilenameUtils.getExtension(fotopetugas.getOriginalFilename())).toLowerCase();
                 petugas.setFoto_petugas(nama);
+                petugas.setStatus("Active");
+                petugas.setUpdateDate(new Date());
                 Path path = Paths.get(SaveDirectory +nama);
                 Files.write(path, bytes);
             } catch (IOException e) {
@@ -90,6 +94,13 @@ public class penggunaPetugasController {
         File file = new File(SaveDirectory.concat(namafotos));
         file.delete();
         petugasService.deletePetugas(id);
+        return "redirect:petugas";
+    }
+    @RequestMapping(value = "/deletepetugasnon")
+    public String hapusPetugasnon(@RequestParam("id")long id){
+        Petugas peg = petugasService.getById(id);
+        peg.setStatus("Disable");
+        petugasService.SaveOrUpdate(peg);
         return "redirect:petugas";
     }
 }

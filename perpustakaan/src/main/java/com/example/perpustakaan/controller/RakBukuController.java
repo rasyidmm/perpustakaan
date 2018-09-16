@@ -26,6 +26,7 @@ public class RakBukuController {
     @RequestMapping(value = "/tambahrakbuku",method = RequestMethod.POST)
     public String tambahrakbuku(@ModelAttribute("rakbuku")Rak_buku rakbuku){
         rakbuku.setCreateDate(new Date());
+        rakbuku.setStatus("Active");
         rak_bukuService.SaveOrUpdate(rakbuku);
         return "redirect:rakbuku";
     }
@@ -33,9 +34,23 @@ public class RakBukuController {
     public ModelAndView updaterakbuku(@RequestParam("id")long id){
         return new ModelAndView("rakbukuview/HalamanRakbukuUpdate","rakbukuview",rak_bukuService.getById(id));
     }
+    @RequestMapping(value = "/updaterakbuku",method = RequestMethod.POST)
+    public String updaterakbuku(@ModelAttribute("rakbuku")Rak_buku rakbuku){
+        rakbuku.setUpdateDate(new Date());
+        rakbuku.setStatus("Active");
+        rak_bukuService.SaveOrUpdate(rakbuku);
+        return "redirect:rakbuku";
+    }
     @RequestMapping(value = "/hapusrakbuku")
     public String deleterakbuku(@RequestParam("id")long id){
         rak_bukuService.deleteRak_buku(id);
+        return "redirect:rakbuku";
+    }
+    @RequestMapping(value = "/hapusrakbukunon")
+    public String deleterakbukunon(@RequestParam("id")long id){
+        Rak_buku rak_buku = rak_bukuService.getById(id);
+        rak_buku.setStatus("Disable");
+        rak_bukuService.SaveOrUpdate(rak_buku);
         return "redirect:rakbuku";
     }
 }

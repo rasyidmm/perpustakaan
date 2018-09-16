@@ -27,6 +27,7 @@ public class PenerbitController {
     @RequestMapping(value = "/tambahpenerbit",method = RequestMethod.POST)
     public String tambahpenerbit(@ModelAttribute("Penerbit")Penerbit penerbit){
         penerbit.setCreateDate(new Date());
+        penerbit.setStatus("Active");
         penerbitService.SaveOrUpdate(penerbit);
         return "redirect:penerbit";
     }
@@ -34,9 +35,23 @@ public class PenerbitController {
     public ModelAndView updatePenerbit(@RequestParam("id")long id){
         return new ModelAndView("penerbitview/HalamanPenerbitUpdate","penerbit",penerbitService.getById(id));
     }
+    @RequestMapping(value = "/updatepenerbit",method = RequestMethod.POST)
+    public String updatepenerbit(@ModelAttribute("Penerbit")Penerbit penerbit){
+        penerbit.setUpdateDate(new Date());
+        penerbit.setStatus("Active");
+        penerbitService.SaveOrUpdate(penerbit);
+        return "redirect:penerbit";
+    }
     @RequestMapping(value = "/hapuspenerbit")
     public String deletepenerbit(@RequestParam("id")long id){
         penerbitService.deletePenerbit(id);
+        return "redirect:penerbit";
+    }
+    @RequestMapping(value = "/hapuspenerbitnon")
+    public String deletepenerbitnon(@RequestParam("id")long id){
+        Penerbit penerbit = penerbitService.getById(id);
+        penerbit.setStatus("Disable");
+        penerbitService.SaveOrUpdate(penerbit);
         return "redirect:penerbit";
     }
 }

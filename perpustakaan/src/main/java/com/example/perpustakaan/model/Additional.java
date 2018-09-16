@@ -23,10 +23,6 @@ public abstract class Additional {
     private String status;
     private String keterangan;
 
-    public Additional(){
-
-    }
-
     /**
      * @return the createDate
      */

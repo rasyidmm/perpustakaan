@@ -67,6 +67,8 @@ public class BukuController {
             buku.setPenerbit(penerbitService.getById(nama_penerbit));
             buku.setPengarang(pengarangService.getById(nama_pengarang));
             buku.setRak_buku(rak_bukuService.getById(nama_rakbuku));
+            buku.setStatus("Active");
+            buku.setCreateDate(new Date());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -113,6 +115,8 @@ public class BukuController {
         buku.setPenerbit(penerbitService.getById(nama_penerbit));
         buku.setPengarang(pengarangService.getById(nama_pengarang));
         buku.setRak_buku(rak_bukuService.getById(nama_rakbuku));
+        buku.setStatus("Active");
+        buku.setUpdateDate(new Date());
         bukuService.SaveOrUpdate(buku);
         return "redirect:buku";
     }
@@ -125,6 +129,13 @@ public class BukuController {
         System.out.println(file);
         file.delete();
         bukuService.deleteBuku(id);
+        return "redirect:buku";
+    }
+    @RequestMapping(value = "/hapusbukunon")
+    public String deletePengarangnon(@RequestParam("id")long id){
+        Buku buku = bukuService.getById(id);
+        buku.setStatus("Disable");
+        bukuService.SaveOrUpdate(buku);
         return "redirect:buku";
     }
 }

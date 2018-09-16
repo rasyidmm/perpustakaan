@@ -27,6 +27,7 @@ public class KlasifikasiController {
     @RequestMapping(value = "/tambahklasifikasi",method = RequestMethod.POST)
     public String tambahPengarang(@ModelAttribute("Klasifikasi")Klasifikasi klasifikasi){
         klasifikasi.setCreateDate(new Date());
+        klasifikasi.setStatus("Active");
         klasifikasiService.SaveOrUpdate(klasifikasi);
         return "redirect:klasifikasi";
     }
@@ -34,9 +35,23 @@ public class KlasifikasiController {
     public ModelAndView updatePengarang(@RequestParam("id")long id){
         return new ModelAndView("klasifikasiview/HalamanKlasifikasiUpdate","klasifikasi",klasifikasiService.getById(id));
     }
+    @RequestMapping(value = "/updateklasifikasi",method = RequestMethod.POST)
+    public String updatePengarang(@ModelAttribute("Klasifikasi")Klasifikasi klasifikasi){
+        klasifikasi.setUpdateDate(new Date());
+        klasifikasi.setStatus("Active");
+        klasifikasiService.SaveOrUpdate(klasifikasi);
+        return "redirect:klasifikasi";
+    }
     @RequestMapping(value = "/hapusklasifikasi")
     public String deletePengarang(@RequestParam("id")long id){
         klasifikasiService.deleteKlasifikasi(id);
+        return "redirect:klasifikasi";
+    }
+    @RequestMapping(value = "/hapusklasifikasinon")
+    public String deletePengarangnon(@RequestParam("id")long id){
+        Klasifikasi klasifikasi= klasifikasiService.getById(id);
+        klasifikasi.setStatus("Disable");
+        klasifikasiService.SaveOrUpdate(klasifikasi);
         return "redirect:klasifikasi";
     }
 }

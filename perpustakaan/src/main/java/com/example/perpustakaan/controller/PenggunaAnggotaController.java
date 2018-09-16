@@ -53,11 +53,14 @@ public class PenggunaAnggotaController {
             String random =  match.replace(".","");
             String nama= fotoanggota.getOriginalFilename().replace(fotoanggota.getOriginalFilename(), FilenameUtils.getBaseName(fotoanggota.getOriginalFilename()).concat(currentDate+random) + "." + FilenameUtils.getExtension(fotoanggota.getOriginalFilename())).toLowerCase();
             anggota.setFoto_anggota(nama);
+            anggota.setStatus("Active");
+            anggota.setCreateDate(new Date());
             Path path = Paths.get(SaveDirectory +nama);
             Files.write(path, bytes);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         anggotaService.SaveOrUpdate(anggota);
         return "redirect:anggota";
     }
@@ -80,6 +83,8 @@ public class PenggunaAnggotaController {
                 String random =  match.replace(".","");
                 String nama= fotoanggota.getOriginalFilename().replace(fotoanggota.getOriginalFilename(), FilenameUtils.getBaseName(fotoanggota.getOriginalFilename()).concat(currentDate+"_"+random+"_"+ang.getId()) + "." + FilenameUtils.getExtension(fotoanggota.getOriginalFilename())).toLowerCase();
                 anggota.setFoto_anggota(nama);
+                anggota.setStatus("Active");
+                anggota.setUpdateDate(new Date());
                 Path path = Paths.get(SaveDirectory +nama);
                 Files.write(path, bytes);
             } catch (IOException e) {
@@ -97,6 +102,12 @@ public class PenggunaAnggotaController {
         File file = new File(SaveDirectory.concat(namafotos));
         file.delete();
         anggotaService.deleteAnggota(id);
+        return "redirect:anggota";
+    }
+    @RequestMapping(value = "/deleteanggotanon")
+    public String hapusAnggotanon(@RequestParam("id")long id){
+        Anggota anggota = anggotaService.getById(id);
+        anggota.setStatus("Disable");
         return "redirect:anggota";
     }
 }
