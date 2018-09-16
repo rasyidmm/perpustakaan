@@ -25,16 +25,12 @@ public class Buku extends Additional implements Serializable {
     @Column(length = 100,nullable = false)
     private String gambar_buku;
     @ManyToOne
-    @Column(length = 100,nullable = false)
     private Pengarang pengarang;
     @ManyToOne
-    @Column(length = 100,nullable = false)
     private Penerbit penerbit;
     @ManyToOne
-    @Column(length = 100,nullable = false)
     private Klasifikasi klasifikasi;
     @ManyToOne
-    @Column(length = 100,nullable = false)
     private Rak_buku rak_buku;
     @OneToMany(mappedBy = "buku")
     private List<Peminjaman> peminjamans;

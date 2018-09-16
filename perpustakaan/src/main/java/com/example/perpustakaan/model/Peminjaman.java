@@ -20,15 +20,13 @@ public class Peminjaman extends Additional implements Serializable {
     @Column(length = 100,nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date tanggal_kembali;
-    private Double denda;
     @Column(length = 100,nullable = false)
+    private Double denda;
     @ManyToOne
     private Buku buku;
     @ManyToOne
-    @Column(length = 100,nullable = false)
     private Anggota anggota;
     @ManyToOne
-    @Column(length = 100,nullable = false)
     private Petugas petugas;
 
     public Long getId() {
